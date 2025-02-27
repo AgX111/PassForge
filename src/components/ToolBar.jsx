@@ -86,25 +86,37 @@ export default function ToolBar() {
           Settings
         </span>
         <span className="divider divider-horizontal" />
-        <span
-          className="p-1 rounded-sm hover:bg-base-300 cursor-pointer"
-          onMouseEnter={() =>
-            setIsHovered({ ADD: false, SETTINGS: false, MENU: true })
-          }
-          onMouseLeave={() =>
-            setIsHovered({ ADD: false, SETTINGS: false, MENU: false })
-          }
-          onClick={() => {}}
-        >
-          <svg
-            aria-hidden="true"
-            className={`h-4 w-4 mr-1 ${isHovered.MENU ? "fill-primary" : "fill-current"}`}
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
+        
+        
+        <div className="dropdown dropdown-bottom dropdown-end flex items-center">
+          {/* role="button" is only for ARIA, does not do anything else */}
+          <span
+            tabIndex={0} 
+            role="button"
+            className="p-1 rounded-sm hover:bg-base-300 cursor-pointer"
+            onMouseEnter={() =>
+              setIsHovered({ ADD: false, SETTINGS: false, MENU: true })
+            }
+            onMouseLeave={() =>
+              setIsHovered({ ADD: false, SETTINGS: false, MENU: false })
+            }
+            onClick={() => {}}
           >
-            <path d="M6.25 10a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0Zm5 0a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0ZM15 11.25a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5Z"></path>
-          </svg>
-        </span>
+            <svg
+              aria-hidden="true"
+              className={`h-4 w-4  ${isHovered.MENU ? "fill-primary" : "fill-current"}`}
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M6.25 10a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0Zm5 0a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0ZM15 11.25a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5Z"></path>
+            </svg>
+          </span>
+          <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+            <li><a>Import passwords</a></li>
+            <li><a>Export passwords</a></li>
+            <li><a>Declined sites and apps</a></li>
+          </ul>
+        </div>
       </div>
     </section>
   );

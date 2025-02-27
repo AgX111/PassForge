@@ -89,7 +89,8 @@ const CustomDropdown = ({ isModalMounted }) => {
       {isOpen && (
         // min-w-112 added, because it was perfectly matching the width of the button above. (Also if modal grows it can also grow with it)
         // border-base-300 looks better than border-base-content
-        <div className="absolute mt-1 min-w-112 bg-base-100 border border-base-300 rounded-md shadow-lg z-10">
+        // "absolute" className is pretty important here, remove it and see what happens!
+        <div className="absolute mt-1 min-w-112 bg-base-100 border border-base-300 rounded-md shadow-lg z-1">
           <div className="max-h-40 overflow-y-auto">
             <ul className="py-1">
               {options.map((option, index) => (
