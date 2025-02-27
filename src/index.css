@@ -1,0 +1,22 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: winter --default, dark --prefersdark, cupcake, caramellatte, synthwave, abyss, luxury,night, dracula ;
+  root: ":root";
+  /* include: button; */
+  exclude: rootscrollgutter ;
+  // Bug, default value for prefix "" is not given by default.
+  prefix: "";
+  logs: true;
+}
+
+/* .btn{
+  @apply px-4 py-2 rounded-lg mx-5;
+} */
+/* body{
+  @apply bg-base-300;
+} */
+
+/* Removed margin and gave paddding on "divider-horizontal" instead of "divider" (Does not disturb the whole divider class) */
+.divider-horizontal{
+  @apply px-2 mx-0 w-0;
+}
