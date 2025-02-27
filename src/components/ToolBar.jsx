@@ -1,29 +1,47 @@
-/* 
+/*
 BUGS:
 1) When moving the cursor too fast over the buttons, the "onMouseLeave" event does not register, making the color change stuck.
 FIXS:
 1) onMouseEnter={() => setIsHovered({...isHovered, ADD: true})}
-onMouseLeave={() => setIsHovered({...isHovered, ADD: false})} 
+onMouseLeave={() => setIsHovered({...isHovered, ADD: false})}
 Changed To:
 onMouseEnter={() => setIsHovered({ ADD: true, SETTINGS: false, MENU: false})}
 onMouseLeave={() => setIsHovered({ ADD: false, SETTINGS: false, MENU: false})}
 */
 
-import { useState } from 'react';
-import AddCard from './AddCard.jsx';
+import { useState } from "react";
+import AddCard from "./AddCard.jsx";
 
 export default function ToolBar() {
-  const [isHovered, setIsHovered] = useState({ADD: false, SETTINGS: false, MENU: false});
-  
+  const [isHovered, setIsHovered] = useState({
+    ADD: false,
+    SETTINGS: false,
+    MENU: false,
+  });
+  const [isModalMounted, setIsModalMounted] = useState(null);
+
+  function handleModalOpen() {
+    // The showModal() method of the HTMLDialogElement interface displays the dialog as a modal in the top layer.
+    document.getElementById("my_modal_2").showModal();
+    setIsModalMounted(true);
+  }
+  function handleModalClose() {
+    setIsModalMounted(false);
+  }
+
   return (
     <section className="flex justify-between items-center ">
       <h3 className="text-ms font-bold">Passwords</h3>
       <div className="w-50 text-sm flex items-center justify-between">
         <span
           className="p-1 rounded-sm hover:bg-base-300 cursor-pointer flex items-center"
-          onMouseEnter={() => setIsHovered({ADD: true, SETTINGS: false, MENU: false})}
-          onMouseLeave={() => setIsHovered({ADD: false, SETTINGS: false, MENU: false})}
-          onClick={()=>document.getElementById('my_modal_2').showModal()}
+          onMouseEnter={() =>
+            setIsHovered({ ADD: true, SETTINGS: false, MENU: false })
+          }
+          onMouseLeave={() =>
+            setIsHovered({ ADD: false, SETTINGS: false, MENU: false })
+          }
+          onClick={handleModalOpen}
         >
           <svg
             aria-hidden="true"
@@ -35,21 +53,25 @@ export default function ToolBar() {
           </svg>
           Add
         </span>
-        
+
         {/* Open the modal using document.getElementById('ID').showModal() method */}
         <dialog id="my_modal_2" className="modal">
           <div className="modal-box">
-            <AddCard/>
+            <AddCard
+              isModalMounted={isModalMounted}
+              handleModalClose={handleModalClose}
+            />
           </div>
-          <form method="dialog" className="modal-backdrop">
-            <button>close</button>
-          </form>
         </dialog>
-        
+
         <span
           className="p-1 rounded-sm hover:bg-base-300 cursor-pointer flex items-center"
-          onMouseEnter={() => setIsHovered({ADD: false, SETTINGS: true, MENU: false})}
-          onMouseLeave={() => setIsHovered({ADD: false, SETTINGS: false, MENU: false})}
+          onMouseEnter={() =>
+            setIsHovered({ ADD: false, SETTINGS: true, MENU: false })
+          }
+          onMouseLeave={() =>
+            setIsHovered({ ADD: false, SETTINGS: false, MENU: false })
+          }
           onClick={() => {}}
         >
           {/* <img className="h-3 w-3 mr-1" src="/src/assets/gear.svg" alt="Key"/> */}
@@ -64,9 +86,14 @@ export default function ToolBar() {
           Settings
         </span>
         <span className="divider divider-horizontal" />
-        <span className="p-1 rounded-sm hover:bg-base-300 cursor-pointer"
-          onMouseEnter={() => setIsHovered({ADD: false, SETTINGS: false, MENU: true})}
-          onMouseLeave={() => setIsHovered({ADD: false, SETTINGS: false, MENU: false})}
+        <span
+          className="p-1 rounded-sm hover:bg-base-300 cursor-pointer"
+          onMouseEnter={() =>
+            setIsHovered({ ADD: false, SETTINGS: false, MENU: true })
+          }
+          onMouseLeave={() =>
+            setIsHovered({ ADD: false, SETTINGS: false, MENU: false })
+          }
           onClick={() => {}}
         >
           <svg

@@ -1,6 +1,7 @@
-import CustomDropdown from './CustomDropdown.jsx';
+import CustomDropdown from "./CustomDropdown.jsx";
 
-export default function AddCard() {
+export default function AddCard({ isModalMounted, handleModalClose }) {
+
   return (
     <div className="card w-full bg-base-100 card-xs">
       <div className="card-body">
@@ -96,20 +97,28 @@ export default function AddCard() {
           </label>
         </fieldset>
         <fieldset className="fieldset">
-          <legend className="fieldset-legend">
-            Category
-          </legend>
-          <CustomDropdown/>
+          <legend className="fieldset-legend">Category</legend>
+          <CustomDropdown isModalMounted={isModalMounted} />
         </fieldset>
         <fieldset className="fieldset">
-          <legend className="fieldset-legend">
-            Notes
-          </legend>
-          <textarea className="textarea w-full" placeholder="Add note"></textarea>
+          <legend className="fieldset-legend">Notes</legend>
+          <textarea
+            className="textarea w-full"
+            placeholder="Add note"
+          ></textarea>
         </fieldset>
-        <p>Adding the password here saves it only to your PassForge account. Make sure the password you save here matches your password for the website.</p>
-        <div className="justify-end card-actions">
-          <button className="btn btn-primary">Buy Now</button>
+        <p>
+          Adding the password here saves it only to your PassForge account. Make
+          sure the password you save here matches your password for the website.
+        </p>
+        <div className="modal-action">
+          <form method="dialog">
+            {/* if there is a button in form, it will close the modal */}
+            <button className="btn btn-error" onClick={handleModalClose}>Cancel</button>
+          </form>
+          <form>
+            <button className="btn btn-success" onClick={handleModalClose}>Save</button>
+          </form>
         </div>
       </div>
     </div>
