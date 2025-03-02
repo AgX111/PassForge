@@ -32,7 +32,8 @@ export default function SideBar() {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <ul className="menu p-4 text-base-content">
+        {/* <ul className="menu p-4 text-base-content"> */}
+        <ul className={`menu p-4 text-base-content ${!isHovered && "lg:pointer-events-auto pointer-events-none"} lg:pointer-events-auto overflow-hidden`}>
           <li>
             <a
               className="flex items-center space-x-2 w-52 "
