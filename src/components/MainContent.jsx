@@ -2,84 +2,9 @@ import { useState } from "react";
 import ToolBar from "./ToolBar.jsx";
 import PasswordList from "./PasswordList.jsx";
 
-export default function MainContent() {
-  const arr = {
-    "100xdevs.com": [
-      {
-        userId: 1,
-        website: "https://100xdevs.com/",
-        password: "password1",
-        username: "username1",
-        domainName: "100xdevs.com",
-        notes: "Notes for 100xdevs.com"
-      }
-    ],
-    "accenture.com": [
-      {
-        userId: 1,
-        website: "https://accenture.com/myzone",
-        password: "password1",
-        username: "username1",
-        domainName: "accenture.com",
-        notes: "Notes for accenture.com"
-      },
-      {
-        userId: 1,
-        website: "https://accenture.com/myzone",
-        password: "password2",
-        username: "username2",
-        domainName: "accenture.com",
-        notes: "Notes for accenture.com"
-      },
-    ],
-    "adidas.co.in": [
-      {
-        userId: 1,
-        website: "https://www.adidas.co.in/",
-        password: "password1",
-        username: "username1",
-        domainName: "adidas.co.in",
-        notes: "Notes for adidas.co.in"
-      }
-    ],
-    "adobe.com": [
-      {
-        userId: 1,
-        website: "https://adobe.com",
-        password: "password1",
-        username: "username1",
-        domainName: "adobe.com",
-        notes: "Notes for adobe.com"
-      }
-    ],
-    "amazon.in": [
-      {
-        userId: 1,
-        website: "https://www.amazon.in/ap/signin",
-        password: "password1",
-        username: "username1",
-        domainName: "amazon.com",
-        notes: "Notes for amazon.in"
-      },
-      {
-        userId: 1,
-        website: "https://www.amazon.in/ap/register",
-        password: "password2",
-        username: "username2",
-        domainName: "amazon.in",
-        notes: "Notes for amazon.in"
-      },
-      {
-        userId: 1,
-        website: "https://www.amazon.in/ap/signin",
-        password: "password3",
-        username: "username3",
-        domainName: "amazon.in",
-        notes: "Notes for amazon.in"
-      },
-    ],
-  };
-  const [domainNames, setDomainNames] = useState(arr);
+export default function MainContent({ passwordEntries }) {
+
+  const [domainNames, setDomainNames] = useState(passwordEntries);
   const [searchValue, setSearchValue] = useState("");
   // const searchPasswords = (e)=>
 

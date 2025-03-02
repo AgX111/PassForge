@@ -91,6 +91,7 @@ export default function ToolBar() {
         <div className="dropdown dropdown-bottom dropdown-end flex items-center">
           {/* role="button" is only for ARIA, does not do anything else */}
           <span
+            // tabIndex={0} is given because it has a menu dropdown
             tabIndex={0} 
             role="button"
             className="p-1 rounded-sm hover:bg-base-300 cursor-pointer"
