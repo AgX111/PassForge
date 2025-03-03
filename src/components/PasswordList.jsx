@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import WebsiteFavicon from "./WebsiteFavicon";
 
 export default function PasswordList({ domainNames, searchValue }) {
   const filteredDomainNames = Object.keys(domainNames).filter((domainName) =>
@@ -23,16 +24,17 @@ export default function PasswordList({ domainNames, searchValue }) {
               onClick={() => {}}
             >
               <div>
-                <img
+                {/* <img
                   className="size-10 rounded-box"
                   src="https://img.daisyui.com/images/profile/demo/3@94.webp"
                   alt={domainName}
-                />
+                /> */}
+                <WebsiteFavicon domainName={domainName} size={32} />
               </div>
               <div>
                 <div>{domainName}</div>
                 <div className="text-xs uppercase font-semibold opacity-60">
-                  2 accounts
+                  {domainNames[domainName].length} accounts
                 </div>
               </div>
               <div className="text-2xl">🢒</div>

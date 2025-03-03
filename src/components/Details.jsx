@@ -5,7 +5,7 @@ export default function Details({ passwordEntries }) {
   const { domainName } = useParams();
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 flex flex-col flex-start gap-4">
       <div className="breadcrumbs text-sm">
         <ul>
           <li><Link to="/">Passwords</Link></li>
