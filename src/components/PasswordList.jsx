@@ -18,7 +18,7 @@ export default function PasswordList({ domainNames, searchValue }) {
       <ul className="list bg-base-100 rounded-box shadow-md">
         {/* Temporary gave the domainName as the "key" prop to each item in List */}
         {filteredDomainNames.map((domainName) => (
-          <Link to={`/details/${domainName}`} key={domainName}>
+          <Link to={`/passwords/details/${domainName}`} key={domainName}>
             <li
               className="list-row hover:bg-base-200 cursor-pointer transition-colors duration-50"
               onClick={() => {}}

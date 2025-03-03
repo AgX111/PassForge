@@ -8,7 +8,7 @@ export default function Details({ passwordEntries }) {
     <div className="container mx-auto p-4 flex flex-col flex-start gap-4">
       <div className="breadcrumbs text-sm">
         <ul>
-          <li><Link to="/">Passwords</Link></li>
+          <li><Link to="/passwords">Passwords</Link></li>
           <li>{domainName}</li>
         </ul>
       </div>

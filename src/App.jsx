@@ -1,9 +1,10 @@
 import "./App.css";
-import MainContent from "./components/MainContent";
-import SideBar from "./components/SideBar";
-import Header from "./components/Header";
-import Details from "./components/Details";
-import { Routes, Route } from "react-router-dom";
+import MainContent from "./components/MainContent.jsx";
+import SideBar from "./components/SideBar.jsx";
+import Header from "./components/Header.jsx";
+import Details from "./components/Details.jsx";
+import Error from "./components/Error.jsx";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 function App() {
   const arr = {
@@ -101,8 +102,12 @@ function App() {
       */}
       <main className="ml-16 lg:ml-60 max-w-250 bg-base-100 rounded-sm">
         <Routes>
-          <Route path="/" element={<MainContent passwordEntries={arr} />} />
-          <Route path="/details/:domainName" element={<Details passwordEntries={arr} />} />
+          <Route path="/" element={<Navigate to="/passwords" replace />} />
+          <Route path="passwords">
+            <Route path="" element={<MainContent passwordEntries={arr} />} />
+            <Route path="details/:domainName" element={<Details passwordEntries={arr} />} />
+          </Route>
+          <Route path="*" element={<Error />} />
         </Routes>
       </main>
     </div>
