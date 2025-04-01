@@ -1,6 +1,7 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
-export default function DetailsCard({ passwordEntry }) {
+export default function DetailsCard({ credential }) {
   const [clickedOnEye, setClickedOnEye] = useState(false);
 
   function handleClickOnEye() {
@@ -21,14 +22,14 @@ export default function DetailsCard({ passwordEntry }) {
               <path d="M10 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-5 9a2 2 0 0 0-2 2c0 1.7.83 2.97 2.13 3.8A8.46 8.46 0 0 0 9 17.96V17c0-.41.16-.78.44-1.06l2.58-2.58a3.72 3.72 0 0 1 .51-2.36H5.01Zm5.15 7.85c.1.1.21.15.35.15h2c.11 0 .2-.03.27-.07.07-.04.12-.1.15-.17a.86.86 0 0 0 .06-.24l.02-.25V18l.56-.02a.47.47 0 0 0 .3-.12c.07-.07.11-.17.12-.3L14 17h.5c.1 0 .2-.02.27-.07a.5.5 0 0 0 .15-.17.65.65 0 0 0 .07-.24 2.34 2.34 0 0 0 .01-.5v-.2c.17.07.35.11.52.14a2.87 2.87 0 0 0 2.62-.86A3.11 3.11 0 0 0 19 13a2.94 2.94 0 0 0-.88-2.13 3 3 0 0 0-5.03 2.84l-2.94 2.94c-.1.1-.15.21-.15.35v1.5c0 .14.05.25.15.35Zm7.13-7.13c.15.14.22.32.22.53 0 .2-.07.39-.22.53a.72.72 0 0 1-.53.22.72.72 0 0 1-.53-.22.72.72 0 0 1-.22-.53c0-.2.07-.39.22-.53a.72.72 0 0 1 .53-.22c.2 0 .39.07.53.22Z"></path>
             </svg>
           </span>
-          <h2 className="card-title">{passwordEntry.username}</h2>
+          <h2 className="card-title">{credential.credentialUsername}</h2>
         </div>
         <span
           role="button"
           className="p-1 tooltip tooltip-left hover:bg-base-300 cursor-pointer rounded-sm"
           data-tip="Copy username"
           onClick={() => {
-            navigator.clipboard.writeText(passwordEntry.username);
+            navigator.clipboard.writeText(credential.credentialUsername);
           }}
         >
           <svg
@@ -48,7 +49,7 @@ export default function DetailsCard({ passwordEntry }) {
             <p>
               {!clickedOnEye
                 ? "************************"
-                : passwordEntry.password}
+                : credential.credentialPassword}
             </p>
             <span
               role="button"
@@ -81,7 +82,7 @@ export default function DetailsCard({ passwordEntry }) {
               className="p-1 tooltip tooltip-left hover:bg-base-300 cursor-pointer rounded-sm"
               data-tip="Copy password"
               onClick={() => {
-                navigator.clipboard.writeText(passwordEntry.password);
+                navigator.clipboard.writeText(credential.credentialPassword);
               }}
             >
               <svg
@@ -98,13 +99,13 @@ export default function DetailsCard({ passwordEntry }) {
         <fieldset className="fieldset">
           <legend className="fieldset-legend">Site</legend>
           <div className="flex flex-row items-center">
-            <p>{passwordEntry.website}</p>
+            <p>{credential.url}</p>
             <span
               role="button"
               className="p-1 tooltip tooltip-left hover:bg-base-300 cursor-pointer rounded-sm"
               data-tip="Go to site"
               onClick={() => {
-                window.open(passwordEntry.website, "_blank", "noopener,noreferrer");
+                window.open(credential.url, "_blank", "noopener,noreferrer");
               }}
             >
               <svg
@@ -121,8 +122,8 @@ export default function DetailsCard({ passwordEntry }) {
         <fieldset className="fieldset">
           <legend className="fieldset-legend">Note</legend>
           <p>
-            {passwordEntry.note.length !== 0
-              ? passwordEntry.note
+            {credential.note.length !== 0
+              ? credential.note
               : "No note added"}
           </p>
         </fieldset>
@@ -135,3 +136,12 @@ export default function DetailsCard({ passwordEntry }) {
     </div>
   );
 }
+
+DetailsCard.propTypes = {
+  credential: PropTypes.shape({
+    credentialUsername: PropTypes.string.isRequired,
+    credentialPassword: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    note: PropTypes.string.isRequired
+  }).isRequired
+};

@@ -2,9 +2,9 @@ import { useState } from "react";
 import ToolBar from "./ToolBar.jsx";
 import PasswordList from "./PasswordList.jsx";
 
-export default function MainContent({ passwordEntries }) {
+export default function MainContent({ credentials }) {
 
-  const [domainNames, setDomainNames] = useState(passwordEntries);
+  const [passwordEntries, setPasswordEntries] = useState(credentials);
   const [searchValue, setSearchValue] = useState("");
   // const searchPasswords = (e)=>
 
@@ -31,7 +31,7 @@ export default function MainContent({ passwordEntries }) {
         />
       </div>
       {/* PasswordList */}
-      <PasswordList domainNames={domainNames} searchValue={searchValue} />
+      <PasswordList credentials={passwordEntries} searchValue={searchValue} />
     </div>
   );
 }
